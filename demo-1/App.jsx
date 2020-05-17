@@ -7,7 +7,7 @@ class App extends React.Component {
     return (
       <div className="shopping-list">
         <h1>Shopping List for {this.props.name}</h1>
-        <ul>
+        <ul className='list'>
           <li>{this.props.instagram}</li>
           <li>{this.props.facebook}</li>
           <li>{this.props.twitter}</li>
