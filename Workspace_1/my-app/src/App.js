@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 import Person from './Person/person';
 
+
 function App() {
   return (
     <div className="App">
       <h1>h1 text</h1>
-      <Person></Person>
+      <Person  />
     </div>
   );
 
