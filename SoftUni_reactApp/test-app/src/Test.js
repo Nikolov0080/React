@@ -5,7 +5,7 @@ function Test(props) {
         <code>
             Code: {props.children}
             <br></br>
-           <name>{props.name}</name>
+            <h1>{props.name+ props.data}</h1>
         </code>
     )
 }
