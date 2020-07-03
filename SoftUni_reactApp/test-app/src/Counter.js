@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Button } from 'react-bootstrap';
 class Counter extends Component {
     constructor(props) {
         super(props);
@@ -25,8 +25,8 @@ class Counter extends Component {
             <div>
                 Counter: {this.state.counter}
                 <br></br>
-                <button onClick={this.addOne}>Add 1</button>
-                <button onClick={this.addTen}>Add 10</button>
+                <Button variant="outline-success" onClick={this.addOne}>Add 1</Button>
+                <Button  variant="outline-success" onClick={this.addTen}>Add 10</Button>
             </div>
         )
     }
