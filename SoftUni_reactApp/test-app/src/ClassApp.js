@@ -2,30 +2,22 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Counter from './Counter';
+import { Button } from 'react-bootstrap';
 
 class ClassApp extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      hideCounters: false
+    }
 
-  //   this.updateCounterWithOne = () => {
-  //     this.setState({
-  //       counter: this.state.counter + 1
-  //     })
-  //   }
-  //   this.updateCounterWithTwo = () => {
-  //     this.setState({
-  //       counter: this.state.counter + 2
-  //     })
-  //   }
-  //   this.Decrease = () => {
-  //     if (this.state.counter >= 1) {
-  //       this.setState({
-  //         counter: this.state.counter - 1
-  //       })
-  //     }
-  //   }
-  // }
+    this.toggleCounters = () => {
+      this.setState({
+        hideCounters: !this.state.hideCounters
+      })
+    }
+  }
   render() {
     return (
       <div className="ClassApp">
@@ -37,16 +29,22 @@ class ClassApp extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >Learn React</a>
-          <Counter counter={0} />
-          <Counter counter={10} />
-          <Counter counter={20} />
-          <Counter counter={30} />
-
+          {this.state.hideCounters ?
+            < div >
+              <Button onClick={this.toggleCounters}> Show Counters</Button>
+            </div>
+            : (
+              <div>
+                <Counter counter={0} />
+                <Button onClick={this.toggleCounters}> Hide Counters</Button>
+              </div>
+            )}
+          <br></br>
           <p> Edit  and save to reload.</p>
           <p>src/App.js </p>
 
         </header>
-      </div>
+      </div >
     );
   }
 }
