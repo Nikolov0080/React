@@ -38,6 +38,10 @@ class ClassApp extends Component {
             rel="noopener noreferrer"
           >Learn React</a>
           <Counter counter={0} />
+          <Counter counter={10} />
+          <Counter counter={20} />
+          <Counter counter={30} />
+
           <p> Edit  and save to reload.</p>
           <p>src/App.js </p>
 
