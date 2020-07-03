@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   // <React.StrictMode>
-    <ClassApp data="Class component"/>,
+    <ClassApp data="Class component" name="Chochko"/>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

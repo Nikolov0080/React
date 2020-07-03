@@ -4,9 +4,22 @@ import './App.css';
 import Test from './Test';
 
 class ClassApp extends Component {
-  constructor(props){
-super(props);
-console.log(props)
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0
+    }
+
+    this.updateCounterWithOne = ()=>{
+      this.setState({
+        counter: this.state.counter + 1
+      })
+    }
+    this.updateCounterWithTwo = ()=>{
+      this.setState({
+        counter: this.state.counter + 2
+      })
+    }
   }
   render() {
     return (
@@ -20,12 +33,17 @@ console.log(props)
             rel="noopener noreferrer"
           >Learn React</a>
           <h1>{this.props.data}</h1>
-            Edit
-                   <Test data={this.props.data} name='componentHere'>
-              src/App.js
-                    </Test> and save to reload.
-          <p>
-                </p>
+          <div className="counter">
+            Counter: {this.state.counter}
+            <br></br>
+            <button onClick={this.updateCounterWithOne}>Increase with one</button>
+            <br></br>
+            <button onClick={this.updateCounterWithTwo}>Increase with two</button>
+
+          </div>
+          <Test data={this.props.data} name={this.props.name} />
+          <p> Edit  and save to reload.</p>
+          <p>src/App.js </p>
 
         </header>
       </div>
