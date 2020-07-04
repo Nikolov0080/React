@@ -4,8 +4,6 @@ import './App.css';
 import Test from './Test';
 import './ClassApp';
 
-
-
 function App() {
   return (
     <div className="App">

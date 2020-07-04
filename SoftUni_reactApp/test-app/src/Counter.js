@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 class Counter extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            counter: props.counter
+   
+        state = {
+            counter: this.props.counter
         }
-        this.addOne = () => {
+
+        addOne = () => {
             this.setState({
                 counter: this.state.counter + 1
             })
         }
-        this.addTen = () => {
+        
+        addTen = () => {
             this.setState({
                 counter: this.state.counter + 10
             })
         }
 
-
-    }
     render() {
         return (
             <div>
