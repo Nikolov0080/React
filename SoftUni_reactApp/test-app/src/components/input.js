@@ -20,7 +20,9 @@ class Input extends Component {
     render() {
         return (
             <div>
-                <input onChange={this.changeValue} />
+                <input placeholder="Username"  />
+                <br></br>
+                <input placeholder="Password" onChange={this.changeValue} type="password" />
                 <p>{this.state.value}</p>
             </div>
         )

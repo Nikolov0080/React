@@ -4,18 +4,18 @@ import '../App.css';
 import Counter from './Counter';
 import { Button, Spinner } from 'react-bootstrap';
 import Input from './input';
-import Navigation from '../components/navBar';
+
 
 class ClassApp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      hideCounters: false,
-      isLoading: true
+      hideCounters: false
+    
     }
 
-    this.counters = [0, 34, 23, 76, 90];
+    this.counters = [ 76, 90];
   }
 
   toggleCounters = () => {
@@ -24,13 +24,7 @@ class ClassApp extends Component {
     });
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false
-      })
-    },2)
-  }
+  
 
   renderCounters() {
     return this.counters.map((startNumber, index) => {
@@ -41,21 +35,10 @@ class ClassApp extends Component {
   }
 
   render() {
-
-    if (this.state.isLoading) {
-      return (
-        <div className="ClassApp">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <Spinner className='Loading' animation="border" variant="success" />
-          </header>
-        </div>
-      )
-    }
-
+    
     return (
       <div className="ClassApp">
-        <Navigation></Navigation>
+        
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <Input></Input>
