@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+
 class Counter extends Component {
 
     state = {
@@ -34,6 +35,8 @@ class Counter extends Component {
         }
     }
 
+
+
     render() {
         return (
             <div>
@@ -43,6 +46,7 @@ class Counter extends Component {
                 <Button variant="outline-success" onClick={this.addTen}>Add 10</Button>
                 <Button variant={this.state.counter >= 10 ? "outline-warning" : "outline-secondary"} onClick={this.removeTen}>Remove 10</Button>
                 <Button variant={this.state.counter >= 1 ? "outline-warning" : "outline-secondary"} onClick={this.removeOne}>Remove 1</Button>
+             
             </div>
         )
     }
