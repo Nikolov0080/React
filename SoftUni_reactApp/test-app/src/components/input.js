@@ -1,29 +1,30 @@
-
 import React, { Component } from 'react';
 
-
 class Input extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            value: ''
-        }
+    state = {
+        input: ''
+    }
 
-        this.changeValue = (event) => {
-            this.setState({
-                value:event.target.value
-            })
+    getData = (e) => {
+        this.setState({ input: e.target.value });
+    }
+
+    saveData = () => {
+        if (this.state.input.length >= 6) {
+            return this.state.input
         }
     }
 
     render() {
         return (
             <div>
-                <input placeholder="Username"  />
+                <h1>Hello user</h1>
+                <input placeholder="Username" onChange={this.getData} />
                 <br></br>
-                <input placeholder="Password" onChange={this.changeValue} type="password" />
-                <p>{this.state.value}</p>
+                <br></br>
+                <br></br>
+                <h1>{this.saveData()}</h1>
             </div>
         )
     }
