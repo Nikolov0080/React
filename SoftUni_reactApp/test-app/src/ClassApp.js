@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Counter from './Counter';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import Input from './input';
 
 class ClassApp extends Component {
@@ -10,16 +10,46 @@ class ClassApp extends Component {
     super(props);
 
     this.state = {
-      hideCounters: false
+      hideCounters: false,
+      isLoading: true
     }
 
-    this.toggleCounters = () => {
-      this.setState({
-        hideCounters: !this.state.hideCounters
-      })
-    }
+
   }
+
+
+  toggleCounters = () => {
+    this.setState({
+      hideCounters: !this.state.hideCounters
+    });
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 4000)
+  }
+
   render() {
+
+    if (this.state.isLoading) {
+      return (
+        <div className="ClassApp">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+
+            <Spinner className='Loading' animation="border" variant="success" />
+        
+            
+          </header>
+
+         
+        </div>
+
+      )
+    }
     return (
       <div className="ClassApp">
         <header className="App-header">
@@ -30,7 +60,7 @@ class ClassApp extends Component {
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
-            >Learn React</a>
+          >Learn React</a>
           {this.state.hideCounters ?
             < div >
               <Button onClick={this.toggleCounters}> Show Counters</Button>

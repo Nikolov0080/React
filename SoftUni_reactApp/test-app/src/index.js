@@ -12,11 +12,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-ReactDOM.render(
-  <ClassApp />,
+// ReactDOM.render(
+//   <ClassApp />,
  
-  document.getElementById('root2')
-)
+//   document.getElementById('root2')
+// )
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
