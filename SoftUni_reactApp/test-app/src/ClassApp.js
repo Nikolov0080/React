@@ -32,9 +32,9 @@ class ClassApp extends Component {
   }
 
   renderCounters() {
-    return this.counters.map((startNumber) => {
+    return this.counters.map((startNumber,index) => {
       return (
-        <Counter counter={startNumber} />
+        <Counter key={index} counter={startNumber} />
       )
     })
   }
@@ -51,6 +51,7 @@ class ClassApp extends Component {
         </div>
       )
     }
+    
     return (
       <div className="ClassApp">
         <header className="App-header">
