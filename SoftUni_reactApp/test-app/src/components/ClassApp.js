@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../App.css';
 import Counter from './Counter';
 import { Button, Spinner } from 'react-bootstrap';
 import Input from './input';
+import Navigation from '../components/navBar';
 
 class ClassApp extends Component {
   constructor(props) {
@@ -28,11 +29,11 @@ class ClassApp extends Component {
       this.setState({
         isLoading: false
       })
-    }, 1000)
+    },2)
   }
 
   renderCounters() {
-    return this.counters.map((startNumber,index) => {
+    return this.counters.map((startNumber, index) => {
       return (
         <Counter key={index} counter={startNumber} />
       )
@@ -51,9 +52,10 @@ class ClassApp extends Component {
         </div>
       )
     }
-    
+
     return (
       <div className="ClassApp">
+        <Navigation></Navigation>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <Input></Input>
@@ -76,8 +78,7 @@ class ClassApp extends Component {
             )}
           <br></br>
           <p> Edit  and save to reload.</p>
-          <p>src/App.js </p>
-
+          <p>src/App.js</p>
         </header>
       </div >
     );

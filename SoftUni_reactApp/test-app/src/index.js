@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ClassApp from './ClassApp';
+import ClassApp from './components/ClassApp';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 ReactDOM.render(
-  // <React.StrictMode>
-  <ClassApp />,
-  // </React.StrictMode>,
+  <React.StrictMode>
+    <ClassApp />
+   </React.StrictMode>,
   document.getElementById('root')
 );
 
 // ReactDOM.render(
 //   <ClassApp />,
- 
+
 //   document.getElementById('root2')
 // )
 // If you want your app to work offline and load faster, you can change
