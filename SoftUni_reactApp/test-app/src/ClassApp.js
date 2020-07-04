@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Counter from './Counter';
 import { Button } from 'react-bootstrap';
+import input from './input';
 
 class ClassApp extends Component {
   constructor(props) {
