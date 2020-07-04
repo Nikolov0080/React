@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 class Counter extends Component {
-   
-        state = {
-            counter: this.props.counter
+
+    state = {
+        counter: this.props.counter
+    }
+
+    addOne = () => {
+        this.setState({
+            counter: this.state.counter + 1
+        })
+    }
+
+    addTen = () => {
+        this.setState({
+            counter: this.state.counter + 10
+        })
+    }
+
+    removeTen = () => {
+        if (this.state.counter >= 1) {
+            this.setState({
+                counter: this.state.counter - 10
+            })
         }
 
-        addOne = () => {
+    }
+
+    removeOne = () => {
+        if (this.state.counter >= 1) {
             this.setState({
-                counter: this.state.counter + 1
+                counter: this.state.counter - 1
             })
         }
-        
-        addTen = () => {
-            this.setState({
-                counter: this.state.counter + 10
-            })
-        }
+
+    }
+
 
     render() {
         return (
@@ -24,7 +43,10 @@ class Counter extends Component {
                 Counter: {this.state.counter}
                 <br></br>
                 <Button variant="outline-success" onClick={this.addOne}>Add 1</Button>
-                <Button  variant="outline-success" onClick={this.addTen}>Add 10</Button>
+                <Button variant="outline-success" onClick={this.addTen}>Add 10</Button>
+                <Button variant="outline-warning" onClick={this.removeTen}>Remove 10</Button>
+                <Button variant="outline-warning" onClick={this.removeOne}>Remove 1</Button>
+
             </div>
         )
     }

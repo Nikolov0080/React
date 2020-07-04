@@ -14,9 +14,8 @@ class ClassApp extends Component {
       isLoading: true
     }
 
-
+    this.counters = [0, 34, 23, 76, 90];
   }
-
 
   toggleCounters = () => {
     this.setState({
@@ -29,7 +28,15 @@ class ClassApp extends Component {
       this.setState({
         isLoading: false
       })
-    }, 4000)
+    }, 1000)
+  }
+
+  renderCounters() {
+    return this.counters.map((startNumber) => {
+      return (
+        <Counter counter={startNumber} />
+      )
+    })
   }
 
   render() {
@@ -39,15 +46,9 @@ class ClassApp extends Component {
         <div className="ClassApp">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-
             <Spinner className='Loading' animation="border" variant="success" />
-        
-            
           </header>
-
-         
         </div>
-
       )
     }
     return (
@@ -67,7 +68,8 @@ class ClassApp extends Component {
             </div>
             : (
               <div>
-                <Counter counter={0} />
+                {this.renderCounters()}
+
                 <Button onClick={this.toggleCounters}> Hide Counters</Button>
               </div>
             )}
