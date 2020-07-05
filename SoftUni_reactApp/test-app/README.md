@@ -1,3 +1,11 @@
+
+
+
+first of all to use the Convertor allow CORS for chrome  ==> https://alfilatov.com/posts/run-chrome-without-cors/
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

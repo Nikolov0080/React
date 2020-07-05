@@ -4,7 +4,7 @@ import Navigation from '../src/components/navBar';
 import ClassApp from '../src/components/ClassApp'
 import Counter from './components/Counter';
 import Input from './components/input';
-
+import Convertor from './components/convertor'
 
 
 
@@ -36,6 +36,12 @@ constructor(props){
                     <Route exact path="/form" >
                         <header className="App-header">
                             <Input />
+                        </header>
+                    </Route>
+
+                    <Route exact path="/convertor" >
+                        <header className="App-header">
+                           <Convertor />
                         </header>
                     </Route>
 
