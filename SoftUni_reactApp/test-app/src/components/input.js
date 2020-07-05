@@ -16,14 +16,14 @@ class Input extends Component {
 
     showData = () => {
         this.setState({
-            isClicked: this.state.isClicked = true
+            isClicked: true
         })
     }
 
     createElement = () => {
         setTimeout(() => {
             this.setState({
-                isClicked: this.state.isClicked = false
+                isClicked: false
             })
         }, 2000)
 
@@ -41,7 +41,7 @@ class Input extends Component {
         return (
             <div>
                 <h1>Enter some digits</h1>
-                <input type="number" placeholder="Username" onChange={this.getData} />
+                <input type="number" placeholder="Enter digits here" onChange={this.getData} />
                 <br></br>
                 <Button onClick={this.showData} >Click</Button>
                 {this.state.isClicked === false ?
