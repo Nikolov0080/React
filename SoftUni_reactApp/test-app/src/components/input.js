@@ -27,13 +27,13 @@ class Input extends Component {
             })
         }, 2000)
 
-        const result = this.state.input.split('').reduce((acc, val) => {
+        let result = this.state.input.split('').reduce((acc, val) => {
             return +acc + +val;
         }, '');
 
         if (result) { return result; }
 
-        return 'Please enter valid input'
+        return 'Please enter valid input';
     }
 
 

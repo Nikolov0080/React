@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 
-
-
-
 class Navigation extends Component {
-
 
     render() {
         return (
