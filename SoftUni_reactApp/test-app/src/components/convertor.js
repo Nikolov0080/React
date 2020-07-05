@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-// TODO add some styling on the converter
+import { Button, Card } from 'react-bootstrap';
+
 
 class Converter extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Converter extends React.Component {
       axios
         .get(
           `http://api.openrates.io/latest?base=${
-            this.state.fromCurrency
+          this.state.fromCurrency
           }&symbols=${this.state.toCurrency}`
         )
         .then(response => {
@@ -62,16 +63,20 @@ class Converter extends React.Component {
         <h2>
           <span>Currency</span>Converter
           <span role="img" aria-label="money">
-            &#x1f4b5;
+
           </span>
         </h2>
-        <div className="From">
+        <div style={{ textAlign: 'center' }} className="From">
+          <Button variant="primary" onClick={this.convertHandler}>Convert</Button>
+          <br></br>
           <input
             name="amount"
             type="text"
             value={this.state.amount}
             onChange={event => this.setState({ amount: event.target.value })}
           />
+          <br></br>
+
           <select
             name="from"
             onChange={event => this.selectHandler(event)}
@@ -81,17 +86,36 @@ class Converter extends React.Component {
               <option key={cur}>{cur}</option>
             ))}
           </select>
+
           <select
             name="to"
+            style={{ margin: '20px' }}
             onChange={event => this.selectHandler(event)}
             value={this.state.toCurrency}
           >
+
             {this.state.currencies.map(cur => (
               <option key={cur}>{cur}</option>
             ))}
           </select>
-          <button onClick={this.convertHandler}>Convert</button>
-          {this.state.result && <h3>{this.state.result}</h3>}
+
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <Card
+            bg="dark"
+            text="light"
+            style={{ width: '18rem' }}
+          >
+            <Card.Header>Result Box</Card.Header>
+            <Card.Body>
+              <Card.Text>
+                {this.state.result && <h3>{this.state.result}</h3>}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+
         </div>
       </div>
     );
