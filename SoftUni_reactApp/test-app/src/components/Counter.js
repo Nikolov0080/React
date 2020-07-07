@@ -3,15 +3,12 @@ import { Button } from 'react-bootstrap';
 
 class Counter extends Component {
 
-    static getDerivedStateFromProps(props, state) {
-        state = {
-            counter: this.props.counter
-        }
+
+    state = {
+        counter: this.props.counter
     }
 
-    componentDidMount() {
-
-    }
+   
 
 
     addOne = () => {
