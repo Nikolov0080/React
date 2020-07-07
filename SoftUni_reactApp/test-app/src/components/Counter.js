@@ -3,9 +3,16 @@ import { Button } from 'react-bootstrap';
 
 class Counter extends Component {
 
-    state = {
-        counter: this.props.counter
+    static getDerivedStateFromProps(props, state) {
+        state = {
+            counter: this.props.counter
+        }
     }
+
+    componentDidMount() {
+
+    }
+
 
     addOne = () => {
         this.setState({
@@ -44,7 +51,6 @@ class Counter extends Component {
                 <Button variant="outline-success" onClick={this.addTen}>Add 10</Button>
                 <Button variant={this.state.counter >= 10 ? "outline-warning" : "outline-secondary"} onClick={this.removeTen}>Remove 10</Button>
                 <Button variant={this.state.counter >= 1 ? "outline-warning" : "outline-secondary"} onClick={this.removeOne}>Remove 1</Button>
-             
             </div>
         )
     }
