@@ -101,7 +101,6 @@ class Converter extends React.Component {
 
           <br></br>
           <br></br>
-          <br></br>
 
           <Card
             bg="dark"
@@ -111,7 +110,7 @@ class Converter extends React.Component {
             <Card.Header>Result Box</Card.Header>
             <Card.Body>
               <Card.Text>
-                {this.state.result && <p>{this.state.result}</p>}
+                {this.state.result && this.state.result}
               </Card.Text>
             </Card.Body>
           </Card>

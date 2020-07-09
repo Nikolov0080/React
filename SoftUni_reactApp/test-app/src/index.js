@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router title="App running on host 3000" />
+    <Router title="React Rocks !" />
    </React.StrictMode>,
   document.getElementById('root')
 );
