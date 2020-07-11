@@ -5,10 +5,9 @@ import Router from './router'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <Router title="React Rocks !" />
+    <Router title="React Rocks !" />,
    </React.StrictMode>,
   document.getElementById('root')
 );

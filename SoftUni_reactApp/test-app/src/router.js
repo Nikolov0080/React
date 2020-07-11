@@ -4,14 +4,13 @@ import Navigation from '../src/components/navBar';
 import ClassApp from '../src/components/ClassApp'
 import Counter from './components/Counter';
 import Input from './components/input';
-import Convertor from './components/convertor'
 import Footer from './components/footer';
 
 
 export default class Pages extends Component {
     constructor(props) {
         super(props)
-        console.log(props)
+        console.log();
     }
 
     render() {
@@ -36,12 +35,7 @@ export default class Pages extends Component {
                             </header>
                         </Route>
 
-                        <Route exact path="/convertor" >
-                            <header className="App-header">
-                                <Convertor />
-                                <Footer title={this.props.title}/>
-                            </header>
-                        </Route>
+                       
                 </Switch>
             </Router>
         )

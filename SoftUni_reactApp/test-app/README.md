@@ -1,7 +1,7 @@
 
 
 
-first of all to use the Convertor allow CORS for chrome  ==> https://alfilatov.com/posts/run-chrome-without-cors/
+
 
 
 

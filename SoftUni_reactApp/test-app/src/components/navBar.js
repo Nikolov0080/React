@@ -12,7 +12,6 @@ class Navigation extends Component {
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/form">Form</Nav.Link>
                         <Nav.Link href="/counters">Counters</Nav.Link>
-                        <Nav.Link href="/convertor">Convertor</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
