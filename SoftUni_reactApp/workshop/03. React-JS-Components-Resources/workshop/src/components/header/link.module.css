@@ -1,0 +1,33 @@
+
+.header-link {
+    color: white;
+    text-decoration: none;
+}
+
+ nav .list_Item {
+    display: inline-block;
+    height: auto;
+    margin-right: 2%;
+    cursor: pointer;
+    padding: 0.5%;
+    margin: 0.1%;
+    vertical-align: top;
+}
+
+nav .list_Item:hover {
+    border-top: none;
+    border-bottom: 2px solid #ffa000;
+    font-weight: bold;
+}
+
+nav .list_Item:not(:first-child) {
+    padding: 2%;
+    margin-top: 1.5%;
+    border-top: 2px solid #ffa000;
+}
+nav .list_Item:first-child {
+    padding:15px    ;
+    margin-top: 1.5%;
+    border-top: 2px solid #ffa000;
+}
+
