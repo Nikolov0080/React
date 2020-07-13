@@ -10,9 +10,10 @@ function App() {
       <Header />
       <div className={style.container}>
         <Aside />
+        <div className={style.inner}>
         <Origamis />
+        </div>
       </div>
-
     </div>
   );
 }
