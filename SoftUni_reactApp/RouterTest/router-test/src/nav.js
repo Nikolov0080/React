@@ -12,7 +12,7 @@ const Nav = () => {
         <BrowserRouter>
         <Route path="/" exact component={App}/>
         <Route path="/search" exact component={Search}/>
-        <Route path="/user" exact component={User}/>
+        <Route path="/user/:userId" exact component={User}/>
         </BrowserRouter>
     )
 }

@@ -4,6 +4,7 @@ import { Navbar, Nav, Button } from 'react-bootstrap';
 
 
 const Top = () => {
+    
     return (
         <div>
             <Nav>
@@ -11,7 +12,7 @@ const Top = () => {
                     <Button variant='danger'>
                         <Link to="/" >go to Home Page</Link>
                     </Button>
-                    
+
                     <Button variant='danger' >
                         <Link to="/search" > go to Search Page</Link>
                     </Button>

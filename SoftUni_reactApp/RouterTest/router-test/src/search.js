@@ -15,7 +15,7 @@ function Search() {
      
          Search
          <Link to="/" >go to Home Page</Link>
-         <Link to="/user" > go to User Page</Link>
+         <Link to="/user/fdsfdsf" > go to User Page</Link>
    <Top />
       </header>
     </div>
