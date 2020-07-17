@@ -1,18 +1,18 @@
 import React from 'react';
-import Item from './item'
+import Link from './link';
 import style from './sideBar.module.css'
+import getAside from '../../utils/navigations';
 
 const Aside = () => {
+    const links = getAside();
     return (
         <aside className={style.Aside}>
             <ul>
-                <Item className1={style.list_Item} text='someText' />
-                <Item className1={style.list_Item} text='someText' />
-                <Item className1={style.list_Item} text='someText' />
-                <Item className1={style.list_Item} text='someText' />
-                <Item className1={style.list_Item} text='someText' />
-                <Item className1={style.list_Item} text='someText' />
-                <Item className1={style.list_Item} text='someText' />
+                {links.map((x) => {
+                    return (
+                        <Link href={x.link} title={x.title} />
+                    )
+                })}
             </ul>
         </aside>
 
