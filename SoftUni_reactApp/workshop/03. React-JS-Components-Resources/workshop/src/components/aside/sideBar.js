@@ -8,9 +8,9 @@ const Aside = () => {
     return (
         <aside className={style.Aside}>
             <ul>
-                {links.map((x) => {
+                {links.map((x,index) => {
                     return (
-                        <Link href={x.link} title={x.title} />
+                        <Link href={x.link} title={x.title} index={index} />
                     )
                 })}
             </ul>
