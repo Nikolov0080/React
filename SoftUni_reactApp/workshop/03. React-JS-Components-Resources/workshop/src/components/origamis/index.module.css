@@ -7,22 +7,15 @@
     margin-bottom: 5%;
 }
 
-h1 {
-    text-align: center;
-    color: #234465;
-    text-decoration: underline;
-    margin-bottom: 2%;
-}
-
-
 .Posts {
     width: 80%;
     border:1px solid red;
     height: auto;
     margin-bottom: 30px;
-    margin-left:17%;
-    margin-top:-40%;
+    margin-top:15vh;
 }
+
+
 
 .Post {
     width: 100%;

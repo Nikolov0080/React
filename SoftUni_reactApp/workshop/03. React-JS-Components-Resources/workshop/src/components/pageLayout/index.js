@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../header/index';
-import style from './wrapper.modules.css'
+import style from './wrapper.module.css'
 import Aside from '../aside/sideBar';
 import Footer from '../footer/footer';
 
@@ -10,7 +10,7 @@ function PageLayout(props) {
             <Header />
             <div className={style.container}>
                 <Aside />
-                <div className={style.da}>
+                <div className={style.Origamis}>
                     {props.children}
                 </div>
             </div>
