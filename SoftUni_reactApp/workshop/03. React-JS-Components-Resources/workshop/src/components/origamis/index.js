@@ -40,7 +40,7 @@ class Origamis extends Component {
         return (
             <div className={style.Posts}>
                 <h1>Origamis</h1>
-                <div >
+                <div>
                     {this.renderOrigamis()}
                 </div>
             </div>

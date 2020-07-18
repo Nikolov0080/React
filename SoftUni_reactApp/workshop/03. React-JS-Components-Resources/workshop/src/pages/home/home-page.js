@@ -1,13 +1,13 @@
 import React from 'react';
-import PageWrapper from '../../components/page-wrapper/index';
+import PageLayout from '../../components/pageLayout/index';
+// import style from './home-page.module.css'
 import Origamis from '../../components/origamis/index'
-
 
 function App() {
   return (
-    <PageWrapper>
+    <PageLayout>
       <Origamis />
-    </PageWrapper>
+    </PageLayout>
   );
 }
 

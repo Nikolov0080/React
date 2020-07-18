@@ -19,6 +19,9 @@ h1 {
     width: 80%;
     border:1px solid red;
     height: auto;
+    margin-bottom: 30px;
+    margin-left:17%;
+    margin-top:-40%;
 }
 
 .Post {
@@ -33,7 +36,7 @@ h1 {
     word-wrap: break-word;
     padding: 0.5%;
     font-style: italic;
-    /* border:1px solid blue; */
+    border:1px solid blue;
     margin-bottom: 0.5%;
     width: 95%;
     display: inline-block;
@@ -42,7 +45,7 @@ h1 {
 }
 
 .Post div {
-    /* border:1px solid red; */
+    border:1px solid red;
     height: auto;
     text-align: right;
     margin-bottom: 0.5%;

@@ -10,7 +10,7 @@ const Aside = () => {
             <ul>
                 {links.map((x,index) => {
                     return (
-                        <Link href={x.link} title={x.title} index={index} />
+                        <Link key={x.title} href={x.link} title={x.title} index={index} />
                     )
                 })}
             </ul>

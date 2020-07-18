@@ -4,12 +4,12 @@ import HomePage from './pages/home/home-page';
 import ShareThoughts from './pages/share-thoughts';
 
 const Navigation = () => {
-
+console.log(13213213)
     return (
         <BrowserRouter>
             <Switch>
-                <Route to="/" component={HomePage} />
-                <Route to="/share" component={ShareThoughts} />
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/share" component={ShareThoughts} />
             </Switch>
         </BrowserRouter>
     )
