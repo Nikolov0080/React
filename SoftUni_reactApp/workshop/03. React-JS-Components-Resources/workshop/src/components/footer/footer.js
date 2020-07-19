@@ -9,9 +9,9 @@ const Footer = () => {
         <div>
             <footer className={style.container_footer}>
                 <ul>
-                    {links.map((x) => {
+                    {links.map((x,index) => {
                         return (
-                            <Link href={x.link} title={x.title} type="footer" />
+                            <Link key={x.title} href={x.link} title={x.title} index={index} type="footer" />
                         )
                     })}
                 </ul>

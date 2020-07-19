@@ -4,7 +4,8 @@ import './App.css';
 import { Link, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+function App(props) {
+  
   return (
     <div className="App">
       <header className="App-header">

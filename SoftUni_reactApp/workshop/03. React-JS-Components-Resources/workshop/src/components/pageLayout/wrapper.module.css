@@ -11,18 +11,38 @@
     margin: 0 auto;
 }
 
-.inner{
+.inner_container{
     width:80%;
     height: auto;
     margin-right: 1%;
     margin-left: 1%;
     display: inline-block;
+    border:2px rebeccapurple solid;
 }
 
 .container {
     margin-top: 8.5%;
     padding: 0.5%;
-    /* border: 1px solid purple; */
+    border: 1px solid purple;
     margin-bottom: 0.1%;
     margin-top:14vh;
+}
+
+
+.Origamis {
+    display: inline-block;
+    width: 81%;
+    height: auto;
+    border:1px solid red;
+    margin-bottom: 5%;
+    margin-left: 2%;
+}
+
+
+.Posts {
+    width: 80%;
+    border:1px solid red;
+    height: auto;
+    margin-bottom: 30px;
+    margin-left:10%;
 }

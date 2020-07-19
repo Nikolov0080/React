@@ -8,9 +8,9 @@ const Header = () => {
     return (
         <nav className={style.navigation}>
             <ul>
-                {links.map((x)=>{
+                {links.map((x,index)=>{
                     return(
-                        <Link href={x.link} title={x.title} />
+                        <Link key={x.title} href={x.link} title={x.title} index={index} />
                     )
                 })}
             </ul>

@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './sideBar.module.css'
 
-const Link = ({ title, href }) => {
+const Link = ({ title, href, index }) => {
     return (
-        <li className={style.list_Item}>
-            <a href={href} className={style.list_item_a}>
+        <li key={index} className={style.list_Item}>
+            <a href={href} key={index} className={style.list_item_a}>
                 {title}
             </a>
         </li>

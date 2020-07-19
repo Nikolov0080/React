@@ -7,19 +7,16 @@
     margin-bottom: 5%;
 }
 
-h1 {
-    text-align: center;
-    color: #234465;
-    text-decoration: underline;
-    margin-bottom: 2%;
-}
-
-
 .Posts {
-    width: 100%;
+    width: 80%;
     border:1px solid red;
     height: auto;
+    margin-bottom: 30px;
+    margin-left:10%;
+
 }
+
+
 
 .Post {
     width: 100%;
@@ -33,7 +30,7 @@ h1 {
     word-wrap: break-word;
     padding: 0.5%;
     font-style: italic;
-    /* border:1px solid blue; */
+    border:1px solid blue;
     margin-bottom: 0.5%;
     width: 95%;
     display: inline-block;
@@ -42,7 +39,7 @@ h1 {
 }
 
 .Post div {
-    /* border:1px solid red; */
+    border:1px solid red;
     height: auto;
     text-align: right;
     margin-bottom: 0.5%;

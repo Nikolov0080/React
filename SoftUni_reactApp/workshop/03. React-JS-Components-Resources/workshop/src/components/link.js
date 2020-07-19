@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './footer/footer.module.css'
 
-const Link = ({ title, href }) => {
+const Link = ({ title, href, index }) => {
     return (
-        <li className={style.listItem}>
-            <a href={href} className={style["header-link"]}>
+        <li key={index} className={style.listItem}>
+            <a href={href} key={index} className={style["header-link"]} >
                 {title}
             </a>
         </li>
