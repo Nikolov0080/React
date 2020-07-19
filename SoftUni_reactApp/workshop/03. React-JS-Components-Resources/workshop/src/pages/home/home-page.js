@@ -21,7 +21,7 @@ class Posts extends Component {
     return (
       origamis.map((origami, index) => {
         return (
-          <Origam key={index} index={index += 1} {...origami} />
+          <Origam key={index} index={index} {...origami} />
         )
       })
     )

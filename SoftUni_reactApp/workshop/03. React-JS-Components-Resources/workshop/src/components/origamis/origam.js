@@ -8,9 +8,8 @@ const Origam = ({ description, author,index }) => {
         <div className={style.Post}>
             <img src={image} alt="ajhsjkahskj" className={style.img} />
             <p className={style.description}>
-               {index}. {description}
+               {index+=1}. {description}
             </p>
-
             <div>
                 <span className={style.user}>{author.username}</span>
             </div>
