@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import style from '../../components/origamis/index.module.css';
 import Origam from '../../components/origamis/origam';
 import Title from '../../components/title/title';
+import getOrigamis from '../../getPosts/getPosts'
 
 class Posts extends Component {
   constructor(props) {
@@ -20,25 +21,19 @@ class Posts extends Component {
     return (
       origamis.map((origami, index) => {
         return (
-          <Origam key={origami._id} index={index} {...origami} />
+          <Origam key={index} index={index += 1} {...origami} />
         )
       })
     )
   }
 
-  getOrigamis = async () => {
-    const promise = await fetch('http://localhost:9999/api/origami');
-    const origamis = await promise.json()
+ async componentDidMount() {
+    const origamis = await getOrigamis();
 
     this.setState({
       origamis
     });
   }
-
-  componentDidMount() {
-    this.getOrigamis();
-  }
-
 
   render() {
     return (
