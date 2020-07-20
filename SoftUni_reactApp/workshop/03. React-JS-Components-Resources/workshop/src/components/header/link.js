@@ -8,7 +8,7 @@ const LinkComponent = ({ title, href, index }) => {
 
     return (
         <li className={style.list_Item}>
-            <Link to={href} key={index} clLinkssName={style["header-link"]}>
+            <Link to={href} key={index} className={style["header-link"]}>
                 {title}
             </Link>
         </li>

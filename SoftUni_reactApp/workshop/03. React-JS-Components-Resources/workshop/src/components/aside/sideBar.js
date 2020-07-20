@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from './link';
 import style from './sideBar.module.css'
-import getAside from '../../utils/navigations';
+import getNavigation from '../../utils/navigations';
 
 const Aside = () => {
-    const links = getAside();
+    const links = getNavigation('userId---Here');
     return (
         <aside className={style.Aside}>
             <ul>

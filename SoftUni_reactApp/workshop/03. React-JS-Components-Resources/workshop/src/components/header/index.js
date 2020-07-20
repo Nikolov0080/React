@@ -4,7 +4,7 @@ import style from './index.module.css';
 import getNavigation from '../../utils/navigations'
 const Header = () => {
 
-    const links = getNavigation();
+    const links = getNavigation('userId---Here');
     return (
         <nav className={style.navigation}>
             <ul>
