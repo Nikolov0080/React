@@ -25,11 +25,11 @@ class Register extends Component {
 
     render() {
 
-        const {
-            email,
-            password,
-            rePassword
-        } = this.state;
+        // const {
+        //     email,
+        //     password,
+        //     rePassword
+        // } = this.state;
         
         return (
             <PageLayout>

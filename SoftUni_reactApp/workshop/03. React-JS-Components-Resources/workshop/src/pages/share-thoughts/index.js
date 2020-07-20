@@ -10,12 +10,10 @@ import getPosts from '../../getPosts/getPosts';
 class ShareThoughts extends Component {
     constructor(props) {
         super(props)
-  
+
         this.state = {
             data: []
         }
-
-        
 
         getPosts().then((posts) => {
             const firstThreePosts = posts.slice(posts.length - 3, posts.length);
@@ -23,7 +21,6 @@ class ShareThoughts extends Component {
                 data: firstThreePosts
             })
         })
-
 
         this.printPosts = () => {
             return this.state.data.map((post, i) => {

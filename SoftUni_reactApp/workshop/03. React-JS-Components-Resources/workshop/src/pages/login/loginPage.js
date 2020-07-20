@@ -25,10 +25,10 @@ class Login extends Component {
 
     render() {
         
-        const {
-            email,
-            password
-        } = this.state;
+        // const {
+        //     email,
+        //     password
+        // } = this.state;
 
         return (
             <PageLayout>
