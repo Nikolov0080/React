@@ -8,7 +8,6 @@ import style from './loginPage.module.css';
 const Login = () => {
     return (
         <PageLayout>
-
             <div className={style.login_container}>
                 <div className={style.form_control}>
                     <Title title="Login" />
