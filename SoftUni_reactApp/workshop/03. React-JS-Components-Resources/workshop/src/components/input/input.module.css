@@ -1,0 +1,16 @@
+.input{
+    text-align: center;
+    border: 1px solid #224465;
+    padding: 1%;
+    margin: 1%;
+    width: 50%;
+    border-radius: 6px;
+    color: #224465;
+
+}
+
+.label{
+    float: left;
+    width: 30%;
+    text-align: right;
+}

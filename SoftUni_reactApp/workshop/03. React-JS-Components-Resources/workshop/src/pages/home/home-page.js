@@ -1,6 +1,4 @@
 import PageLayout from '../../components/pageLayout/index';
-
-
 import React, { Component } from 'react';
 import style from '../../components/origamis/index.module.css';
 import Origam from '../../components/origamis/origam';

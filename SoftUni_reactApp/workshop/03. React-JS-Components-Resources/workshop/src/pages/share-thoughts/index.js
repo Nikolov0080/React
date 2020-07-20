@@ -7,7 +7,6 @@ import TextArea from '../../components/textarea/textArea';
 import Origam from '../../components/origamis/origam';
 import getPosts from '../../getPosts/getPosts';
 
-const image = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
 
 class ShareThoughts extends Component {
     constructor(props) {
