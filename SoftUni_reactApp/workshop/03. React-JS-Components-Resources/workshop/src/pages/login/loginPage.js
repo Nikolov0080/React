@@ -16,10 +16,7 @@ const Login = () => {
                     <Input  label="Password" type="password" placeholder="password"/>
                     <Button value='Login' />
                 </div>
-
             </div>
-
-
         </PageLayout>
     )
 }

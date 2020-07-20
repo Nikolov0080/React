@@ -17,7 +17,7 @@ class ShareThoughts extends Component {
         }
 
         getPosts().then((posts) => {
-            const firstThreePosts = posts.slice(0,3);
+            const firstThreePosts = posts.slice(posts.length - 3, posts.length);
             this.setState({
                 data: firstThreePosts
             })
@@ -32,8 +32,8 @@ class ShareThoughts extends Component {
                     <Title title="share your thoughts..." />
                     <TextArea />
                     <Button value="Post" />
-                    {this.state.data.map((post,i) => {
-                      return <Origam key={i} description={post.description} author={post.author} index={i} />
+                    {this.state.data.map((post, i) => {
+                        return <Origam key={i} description={post.description} author={post.author} index={this.state.data.length-(i-=1)} />
                     })}
                 </div>
             </PageWrapper>

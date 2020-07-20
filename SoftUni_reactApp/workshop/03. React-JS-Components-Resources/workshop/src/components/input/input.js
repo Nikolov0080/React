@@ -5,7 +5,10 @@ const Input = ({ label, name, placeholder, type }) => {
     return (
         <div>
             <label className={style.label}>{label}</label>
-            <input className={style.input} name={name} type={type} placeholder={placeholder}></input>
+            <input className={style.input}
+                name={name} 
+                type={type}
+                placeholder={placeholder}></input>
         </div>
 
     )
