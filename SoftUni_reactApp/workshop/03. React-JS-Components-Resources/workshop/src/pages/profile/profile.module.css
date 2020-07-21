@@ -3,16 +3,16 @@
   display: inline-block;
   vertical-align: top;
   padding: 0.5%;
-  border: 2px blue solid;
-
+  /* border: 2px blue solid; */
+  margin:0 auto;
+  display: block;
 }
 
 .profile_image {
   max-width: 265px;
   margin:0 auto;
   display: block;
-  border: 2px rgb(21, 255, 0) solid;
-
+  /* border: 2px rgb(21, 255, 0) solid; */
 }
 
 .personal_info {
@@ -22,7 +22,7 @@
   color: #234465;
   width: 50%;
   text-align: center;
-  border: 2px red solid;
+  /* border: 2px red solid; */
 }
 
 .p {

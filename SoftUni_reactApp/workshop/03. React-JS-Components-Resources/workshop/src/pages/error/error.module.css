@@ -1,0 +1,12 @@
+.error_container{
+    width:40%;
+    margin:0 auto;
+    display: block;
+    border: blue 1px solid;
+    height: 40%;
+    padding:10%
+}
+
+img{
+    max-width: 120%;
+}

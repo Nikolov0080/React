@@ -1,33 +1,67 @@
 import React, { Component } from 'react';
 import PageLayout from '../../components/pageLayout/index';
-import getPosts from '../../getPosts/getPosts';
-import Origam from '../../components/origamis/origam';
 import style from './profile.module.css';
+import getOrigamis from '../../getPosts/getPosts';
+import Origam from '../../components/origamis/origam'
 
 class Profile extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            data: []
-        }
-
-
-        getPosts().then((posts) => {
-            const firstThreePosts = posts.slice(0, 3);
-            this.setState({
-                data: firstThreePosts
-            })
-        });
-
-        this.printPosts = () => {
-            return this.state.data.map((post, i) => {
-                return <Origam key={i} description={"CURRENT USER POST  !!  " + post.description} author={post.author} index={i} />
-            })
+            username: null,
+            posts: null,
+            origamis: []
         }
     }
 
+    componentDidMount() {
+        this.getUser(this.props.match.params.id);
+
+    }
+
+    getUser = async (id) => {
+
+        const promise = await fetch(`http://localhost:9999/api/user?id=${id}`);
+
+
+        console.log(promise.ok)
+        const user = await promise.json();
+        const [currentUser] = user.filter((us) => us._id === id);
+
+        
+        if (!currentUser) {
+           return this.props.history.push('/error')
+        }
+
+        const origamis = await getOrigamis();
+
+        this.setState({
+            origamis,
+            username: currentUser.username,
+            posts: currentUser.posts.length || 0
+        })
+    }
+
+    renderOrigamis = () => {
+        const { origamis } = this.state;
+        const origamisCut = origamis.slice(0, 3)
+        return (
+            origamisCut.map((origami, index) => {
+                return (
+                    <Origam key={index} index={index} {...origami} />
+                )
+            })
+        )
+    }
+
     render() {
+
+        const {
+            username,
+            posts
+        } = this.state;
+
         return (
             <PageLayout>
                 <div className={style.profile}>
@@ -35,15 +69,16 @@ class Profile extends Component {
                     <div className={style.personal_info}>
                         <p className={style.p}>
                             <span>Email: </span>
-                        testUser1@email.com
-                       </p>
+                            {username}
+                        </p>
                         <p className={style.p}>
                             <span>Posts: </span>
-                                9
-                         </p>
+                            {posts}
+                        </p>
                     </div>
                 </div>
-                {this.printPosts()}
+
+                {this.renderOrigamis()}
             </PageLayout>
         )
     }
