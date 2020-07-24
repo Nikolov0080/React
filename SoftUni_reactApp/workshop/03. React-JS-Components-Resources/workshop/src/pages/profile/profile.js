@@ -24,12 +24,10 @@ class Profile extends Component {
 
         const promise = await fetch(`http://localhost:9999/api/user?id=${id}`);
 
-
-        console.log(promise.ok)
-        const user = await promise.json();
-        const [currentUser] = user.filter((us) => us._id === id);
-
-        
+    
+        const currentUser = await promise.json();
+     
+       
         if (!currentUser) {
            return this.props.history.push('/error')
         }

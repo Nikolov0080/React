@@ -16,10 +16,6 @@ const Profile = React.lazy(() => import('./pages/profile/profile'));
 const ErrorPage = React.lazy(() => import('./pages/error/error'));
 
 
-
-
-
-
 const Navigation = () => {
 
     return (
@@ -31,8 +27,9 @@ const Navigation = () => {
                     <Route path="/login" exact component={Login} />
                     <Route path="/register" exact component={Register} />
                     <Route path="/profile/:id" exact component={Profile} />
-                    <Route path="/error" exact component={ErrorPage} />
-                    <Route component={ErrorPage} />
+                    <Route path='/error' component={ErrorPage} />
+                    {/* <Redirect from='*' to='/error' /> */}
+                
                 </Suspense>
             </Switch>
         </BrowserRouter>
