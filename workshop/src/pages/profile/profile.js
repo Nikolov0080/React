@@ -11,7 +11,8 @@ class Profile extends Component {
         this.state = {
             username: null,
             posts: null,
-            origamis: []
+            origamis: [],
+            currentUser: {}
         }
     }
 
@@ -24,12 +25,14 @@ class Profile extends Component {
 
         const promise = await fetch(`http://localhost:9999/api/user?id=${id}`);
 
-    
+
         const currentUser = await promise.json();
-     
-       
+
+        this.setState({
+            currentUser: currentUser.posts
+        })
         if (!currentUser) {
-           return this.props.history.push('/error')
+            return this.props.history.push('/error')
         }
 
         const origamis = await getOrigamis();
@@ -43,7 +46,7 @@ class Profile extends Component {
 
     renderOrigamis = () => {
         const { origamis } = this.state;
-        const origamisCut = origamis.slice(0, 3)
+        const origamisCut = origamis.slice(0, this.state.currentUser.length)
         return (
             origamisCut.map((origami, index) => {
                 return (

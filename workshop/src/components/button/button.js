@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './button.module.css';
 
-const Button = ({ type ,value }) => {
+const Button = ({value }) => {
 
     return (
         <button type="submit" className={style.button}>

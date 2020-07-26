@@ -5,6 +5,7 @@ import PageLayout from '../../components/pageLayout/index';
 import Input from '../../components/input/input';
 import style from './loginPage.module.css';
 import UserContext from '../../context/userContext';
+
 class Login extends Component {
 
     constructor(props) {
@@ -25,7 +26,7 @@ class Login extends Component {
         const newState = {}
         newState[type] = event.target.value;
         this.setState(newState);
-        console.log(newState)
+
     }
 
     handleSubmit = async (event) => {
@@ -35,21 +36,39 @@ class Login extends Component {
             password
         } = this.state;
 
-        const body = JSON.stringify({username,password})
-        
-        fetch('http://localhost:9999/api/user/login',{
-            method:"POST",
-            body:body,
-            headers:{
-                'Content-Type':"application/json"
+        const body = JSON.stringify({ username, password })
+
+        try {
+            const promise = await fetch('http://localhost:9999/api/user/login', {
+                method: "POST",
+                body: body,
+                headers: {
+                    'Content-Type': "application/json"
+                }
+            })
+
+            const response = await promise.json()
+
+            const authToken = promise.headers.get("Auth");
+            document.cookie = `x-auth-token=${authToken}`
+
+            if (response.username && authToken) {
+
+                this.props.history.push('/');
+                console.log("User Logged ---- " + response.username)
             }
-        }).then( async promise=>{
-            console.log(await promise.json());
-        })
+
+
+        } catch (error) {
+            console.log(error)
+        }
+
+
+
     }
 
     render() {
-       
+
         return (
             <PageLayout>
                 <div className={style.login_container}>

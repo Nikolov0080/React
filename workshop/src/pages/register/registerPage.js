@@ -17,19 +17,14 @@ class Register extends Component {
     }
 
     onChange = (event, type) => {
-
         const newState = {}
         newState[type] = event.target.value;
-        this.setState(newState);
+        this.setState(newState);       
     }
 
     render() {
 
-        // const {
-        //     email,
-        //     password,
-        //     rePassword
-        // } = this.state;
+       
         
         return (
             <PageLayout>

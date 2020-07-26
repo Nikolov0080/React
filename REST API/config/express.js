@@ -6,7 +6,9 @@ const secret = 'secret';
 
 
 module.exports = (app) => {
-    app.use(cors());
+    app.use(cors({
+        exposedHeaders:"Auth"
+    }));
 
     app.use(bodyParser.urlencoded({
         extended: true
