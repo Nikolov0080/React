@@ -5,6 +5,7 @@ import Origam from '../../components/origamis/origam';
 import Title from '../../components/title/title';
 import getOrigamis from '../../getPosts/getPosts'
 
+
 class Posts extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +37,7 @@ class Posts extends Component {
   render() {
     return (
       <PageLayout>
+    
         <div className={style.Posts}>
           <Title title="Publications" />
           <div>

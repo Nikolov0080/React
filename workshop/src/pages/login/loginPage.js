@@ -5,6 +5,7 @@ import PageLayout from '../../components/pageLayout/index';
 import Input from '../../components/input/input';
 import style from './loginPage.module.css';
 import UserContext from '../../context/userContext';
+import auth from '../../utils/auth';
 
 class Login extends Component {
 
@@ -29,6 +30,10 @@ class Login extends Component {
 
     }
 
+
+
+
+
     handleSubmit = async (event) => {
         event.preventDefault()
         const {
@@ -38,32 +43,19 @@ class Login extends Component {
 
         const body = JSON.stringify({ username, password })
 
-        try {
-            const promise = await fetch('http://localhost:9999/api/user/login', {
-                method: "POST",
-                body: body,
-                headers: {
-                    'Content-Type': "application/json"
-                }
-            })
 
-            const response = await promise.json()
 
-            const authToken = promise.headers.get("Auth");
-            document.cookie = `x-auth-token=${authToken}`
-
-            if (response.username && authToken) {
-
-                this.props.history.push('/');
-                console.log("User Logged ---- " + response.username)
+        await auth('http://localhost:9999/api/user/login',
+            body,
+            () => {
+                console.log("Logged")
+                this.props.history.push('/')
+            },
+            (err) => {
+                console.log("Error" + err)
+                this.props.history.push('/error')
             }
-
-
-        } catch (error) {
-            console.log(error)
-        }
-
-
+        )
 
     }
 

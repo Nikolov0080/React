@@ -6,14 +6,18 @@ module.exports = {
     get: (req, res, next) => {
         models.User.findById(req.query.id)
             .then((user) => res.send(user))
-            .catch(err=> res.status(500))
+            .catch(err => res.status(500))
     },
 
     post: {
         register: (req, res, next) => {
             const { username, password } = req.body;
             models.User.create({ username, password })
-                .then((createdUser) => res.send(createdUser))
+                .then((createdUser) => {
+                    
+                    const token = utils.jwt.createToken({ id: createdUser._id });
+                    res.header("Auth", token).send(createdUser);
+                })
                 .catch(next)
         },
 
