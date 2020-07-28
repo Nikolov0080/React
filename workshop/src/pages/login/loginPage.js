@@ -47,7 +47,8 @@ class Login extends Component {
 
         await auth('http://localhost:9999/api/user/login',
             body,
-            () => {
+            (user) => {
+                this.context.logIn(user);
                 console.log("Logged")
                 this.props.history.push('/')
             },
@@ -56,7 +57,6 @@ class Login extends Component {
                 this.props.history.push('/error')
             }
         )
-
     }
 
     render() {

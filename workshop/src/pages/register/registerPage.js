@@ -5,6 +5,7 @@ import Input from '../../components/input/input';
 import style from './registerPage.module.css';
 import Button from '../../components/button/button';
 import auth from '../../utils/auth';
+import UserContext from '../../context/userContext';
 
 
 class Register extends Component {
@@ -19,6 +20,7 @@ class Register extends Component {
 
     }
 
+    static contextType = UserContext;
 
     handleSubmit = async (event) => {
         event.preventDefault();
@@ -35,10 +37,11 @@ class Register extends Component {
         }
         const body = JSON.stringify({ username, password })
 
-        
+
         await auth('http://localhost:9999/api/user/register',
             body,
-            () => {
+            (user) => {
+                this.context.logIn(user)
                 console.log("Registered")
                 this.props.history.push('/')
             },
@@ -46,7 +49,7 @@ class Register extends Component {
                 console.log("Error" + err)
             }
         )
-  
+
     }
 
     onChange = (event, type) => {
@@ -56,7 +59,6 @@ class Register extends Component {
     }
 
     render() {
-
         return (
             <PageLayout>
                 <form className={style.login_container} onSubmit={this.handleSubmit}>

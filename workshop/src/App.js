@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserContext from './context/userContext';
 
 class App extends Component {
     constructor(props) {
@@ -6,7 +7,7 @@ class App extends Component {
 
         this.state = {
             isLogged: false,
-            user:undefined
+            user: undefined
         }
     }
 
@@ -18,15 +19,31 @@ class App extends Component {
     }
 
     logOut = () => {
+        // document.cookie
         this.setState({
             isLogged: false,
-            user:undefined
+            user: undefined
         });
-
     }
 
     render() {
-        return this.props.children
+
+        const {
+            isLogged,
+            user
+        } = this.state;
+
+        return (
+            <UserContext.Provider value={{
+                isLogged,
+                user,
+                logIn: this.logIn,
+                logOut: this.logOut
+            }}>
+
+                {this.props.children}
+            </UserContext.Provider >
+        )
     }
 }
 

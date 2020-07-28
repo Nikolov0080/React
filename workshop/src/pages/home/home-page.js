@@ -4,6 +4,7 @@ import style from '../../components/origamis/index.module.css';
 import Origam from '../../components/origamis/origam';
 import Title from '../../components/title/title';
 import getOrigamis from '../../getPosts/getPosts'
+import UserContext from '../../context/userContext';
 
 
 class Posts extends Component {
@@ -14,6 +15,8 @@ class Posts extends Component {
       origamis: []
     }
   }
+
+  static contextType = UserContext;
 
   renderOrigamis = () => {
     const { origamis } = this.state;
@@ -35,6 +38,7 @@ class Posts extends Component {
   }
 
   render() {
+    console.log(this.context)
     return (
       <PageLayout>
     
