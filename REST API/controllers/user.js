@@ -14,8 +14,9 @@ module.exports = {
             const { username, password } = req.body;
             models.User.create({ username, password })
                 .then((createdUser) => {
-                    
-                    const token = utils.jwt.createToken({ id: createdUser._id });
+
+                    const token = utils.jwt.createToken({ id: createdUser._id, username: username });
+                    res.cookie("auth-x-token", token)
                     res.header("Auth", token).send(createdUser);
                 })
                 .catch(next)
@@ -31,7 +32,9 @@ module.exports = {
                         return;
                     }
 
-                    const token = utils.jwt.createToken({ id: user._id });
+                    const token = utils.jwt.createToken({ id: user._id , username: username });
+                    res.cookie("auth-x-token", token)
+
                     res.header("Auth", token).send(user);
                 })
                 .catch(next);

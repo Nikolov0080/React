@@ -17,7 +17,6 @@ class Aside extends Component {
 
         const links = getNavigation(isLogged, user);
 
-        console.log(user)
         return (
             <aside className={style.Aside}>
                 <ul>

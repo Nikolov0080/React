@@ -3,7 +3,8 @@ import PageLayout from '../../components/pageLayout/index';
 import style from './profile.module.css';
 import getOrigamis from '../../getPosts/getPosts';
 import Origam from '../../components/origamis/origam'
-
+import UserContext from '../../context/userContext';
+import jwtDecoder from 'jwt-decode';
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -14,16 +15,23 @@ class Profile extends Component {
             origamis: [],
             currentUser: {}
         }
+
+        const cookieCheck = (cookie) => {
+            return (cookie) ? jwtDecoder(cookie.replace('x-auth-token=', "")) : undefined;
+        }
+        console.log(cookieCheck(document.cookie))
     }
 
+    static contextType = UserContext;
+
     componentDidMount() {
-        this.getUser(this.props.match.params.id);
+        this.getUser(this.context.user.id);
+        console.log(this.context)
     }
 
     getUser = async (id) => {
 
         const promise = await fetch(`http://localhost:9999/api/user?id=${id}`);
-
 
         const currentUser = await promise.json();
 
@@ -34,7 +42,11 @@ class Profile extends Component {
             return this.props.history.push('/error')
         }
 
-        const origamis = await getOrigamis();
+        const allOrigamis = await getOrigamis();
+
+        const origamis = allOrigamis.filter((item) => {
+            return item.author._id === id
+        });
 
         this.setState({
             origamis,
@@ -55,6 +67,11 @@ class Profile extends Component {
         )
     }
 
+    logOut = () => {
+        this.context.logOut();
+        this.props.history.push('/');
+    }
+
     render() {
 
         const {
@@ -68,7 +85,7 @@ class Profile extends Component {
                     <img className={style.profile_image} src="https://picsum.photos/id/237/200/300" alt="profile-imagee" />
                     <div className={style.personal_info}>
                         <p className={style.p}>
-                            <span>Email: </span>
+                            <span>Username: </span>
                             {username}
                         </p>
                         <p className={style.p}>
@@ -79,6 +96,8 @@ class Profile extends Component {
                 </div>
 
                 {this.renderOrigamis()}
+
+                <button onClick={this.logOut}>Logout</button>
             </PageLayout>
         )
     }

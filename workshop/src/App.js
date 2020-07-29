@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserContext from './context/userContext';
 
+
 class App extends Component {
     constructor(props) {
         super(props)
@@ -12,6 +13,7 @@ class App extends Component {
     }
 
     logIn = (user) => {
+
         this.setState({
             isLogged: !this.state.isLogged,
             user
@@ -19,7 +21,7 @@ class App extends Component {
     }
 
     logOut = () => {
-        // document.cookie
+        document.cookie = "x-auth-token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
         this.setState({
             isLogged: false,
             user: undefined

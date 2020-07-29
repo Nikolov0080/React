@@ -8,8 +8,9 @@ module.exports = {
     },
 
     post: (req, res, next) => {
+  
         const { description } = req.body;
-        const { _id } = req.user;
+        const { _id } = req.body;
 
         models.Origami.create({ description, author: _id })
             .then((createdOrigami) => {
