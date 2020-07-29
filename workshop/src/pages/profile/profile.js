@@ -4,7 +4,7 @@ import style from './profile.module.css';
 import getOrigamis from '../../getPosts/getPosts';
 import Origam from '../../components/origamis/origam'
 import UserContext from '../../context/userContext';
-import jwtDecoder from 'jwt-decode';
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -15,18 +15,13 @@ class Profile extends Component {
             origamis: [],
             currentUser: {}
         }
-
-        const cookieCheck = (cookie) => {
-            return (cookie) ? jwtDecoder(cookie.replace('x-auth-token=', "")) : undefined;
-        }
-        console.log(cookieCheck(document.cookie))
     }
 
     static contextType = UserContext;
 
     componentDidMount() {
         this.getUser(this.context.user.id);
-        console.log(this.context)
+        console.log(this.context.user)
     }
 
     getUser = async (id) => {
