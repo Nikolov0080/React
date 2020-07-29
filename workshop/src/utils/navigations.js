@@ -16,7 +16,7 @@ const getNavigation = (isLogged, user) => {
                 },
                 {
                     title: "Profile",
-                    link: `/profile/${user && user._id}`
+                    link: `/profile/${user.id}`
                 }
             ]
         )

@@ -15,6 +15,8 @@ class Aside extends Component {
             user
         } = this.context;
 
+
+
         const links = getNavigation(isLogged, user);
 
         return (
