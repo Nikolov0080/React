@@ -1,28 +1,46 @@
-const getNavigation = (userId) => {
+const getNavigation = (isLogged, user) => {
 
-    const links = [{
-            title: "Publications",
-            link: "/"
-        },
-        {
-            title: "Share you Thoughts",
-            link: "/share"
-        },
-        {
-            title: "Profile",
-            link: `/profile/${userId}`
-        },
-        {
-            title: "Login",
-            link: "/login"
-        },
-        {
-            title: "Register",
-            link: "/register"
-        }
-    ]
 
-    return links
+
+    if (isLogged === true) {
+
+        return (
+            [
+                {
+                    title: "Publications",
+                    link: "/"
+                },
+                {
+                    title: "Share you Thoughts",
+                    link: "/share"
+                },
+                {
+                    title: "Profile",
+                    link: `/profile/${user && user._id}`
+                }
+            ]
+        )
+    }else{
+
+        return (
+        [
+            {
+                title: "Publications",
+                link: "/"
+            },
+            {
+                title: "Login",
+                link: "/login"
+            },
+            {
+                title: "Register",
+                link: "/register"
+            }
+        ]
+    )
+    }
+
+    
 }
 
 export default getNavigation;

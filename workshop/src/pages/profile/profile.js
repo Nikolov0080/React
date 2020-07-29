@@ -18,7 +18,6 @@ class Profile extends Component {
 
     componentDidMount() {
         this.getUser(this.props.match.params.id);
-
     }
 
     getUser = async (id) => {
