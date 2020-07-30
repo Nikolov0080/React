@@ -3,13 +3,13 @@
     display: inline-block;
     width: 83%;
     height: auto;
-    /* border:1px solid red; */
+  
     margin-bottom: 5%;
 }
 
 .Posts {
     width: 80%;
-    border:1px solid red;
+
     height: auto;
     margin-bottom: 30px;
     margin-left:10%;
@@ -21,7 +21,7 @@
 .Post {
     width: 100%;
     height: auto;
-    border: 1px solid #234465;
+    
     margin-bottom: 3%;
     border-radius: 4px;
 }
@@ -39,7 +39,7 @@
 }
 
 .Post div {
-    border:1px solid red;
+  
     height: auto;
     text-align: right;
     margin-bottom: 0.5%;
