@@ -23,7 +23,9 @@ module.exports = {
         },
 
         verifyLogin: (req, res, next) => {
-            const token = req.body.token || '';
+            
+            const token = req.headers.auth || '';
+         
           const  redirectAuthenticated = true
             Promise.all([
                 utils.jwt.verifyToken(token),
