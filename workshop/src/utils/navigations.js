@@ -1,10 +1,7 @@
-const getNavigation = (isLogged, user) => {
+const getNavigation =  (user) => {
 
-
-
-    if (isLogged === true) {
-
-        return (
+    if (user && user.isLogged) {
+       return (
             [
                 {
                     title: "Publications",
@@ -20,27 +17,27 @@ const getNavigation = (isLogged, user) => {
                 }
             ]
         )
-    }else{
+    } else {
 
         return (
-        [
-            {
-                title: "Publications",
-                link: "/"
-            },
-            {
-                title: "Login",
-                link: "/login"
-            },
-            {
-                title: "Register",
-                link: "/register"
-            }
-        ]
-    )
+            [
+                {
+                    title: "Publications",
+                    link: "/"
+                },
+                {
+                    title: "Login",
+                    link: "/login"
+                },
+                {
+                    title: "Register",
+                    link: "/register"
+                }
+            ]
+        )
     }
 
-    
+
 }
 
 export default getNavigation;

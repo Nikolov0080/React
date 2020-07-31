@@ -17,7 +17,6 @@ class Register extends Component {
             password: "",
             rePassword: ""
         }
-
     }
 
     static contextType = UserContext;
@@ -74,7 +73,6 @@ class Register extends Component {
             </PageLayout>
         )
     }
-
 }
 
 export default Register;

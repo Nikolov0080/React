@@ -19,8 +19,8 @@ class Profile extends Component {
 
     static contextType = UserContext;
 
-    componentDidMount() {
-        this.getUser(this.context.user.id);
+   componentDidMount() {
+       this.getUser(this.context.user.id);
         console.log(this.context.user)
     }
 
@@ -33,6 +33,7 @@ class Profile extends Component {
         this.setState({
             currentUser: currentUser.posts
         })
+        
         if (!currentUser) {
             return this.props.history.push('/error')
         }

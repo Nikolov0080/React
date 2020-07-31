@@ -9,15 +9,11 @@ class Aside extends Component {
 
     render() {
 
-
         const {
-            isLogged,
             user
         } = this.context;
 
-
-
-        const links = getNavigation(isLogged, user);
+        const links = getNavigation(user);
 
         return (
             <aside className={style.Aside}>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserContext from './context/userContext';
 
 function getCookie(name) {
@@ -6,80 +6,81 @@ function getCookie(name) {
     return cookieValue ? cookieValue[2] : null;
 }
 
-class App extends Component {
-    constructor(props) {
-        super(props)
+const App = (props) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-        this.state = {
-            isLogged: null,
-            user: undefined
-        }
+
+    const logIn = (user) => {
+
+        setUser({
+            ...user,
+            isLogged: true
+        })
     }
 
+    const logOut = () => {
 
-    logIn = (user) => {
-
-        this.setState({
-            isLogged: !this.state.isLogged,
-            user
-        });
-    }
-
-    logOut = () => {
         document.cookie = "x-auth-token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
-        this.setState({
-            isLogged: false,
-            user: undefined
-        });
+
+        setUser({
+            isLogged: false
+        })
     }
 
-    componentDidMount() {
+    useEffect(() => {
 
         const token = getCookie("x-auth-token");
-        console.log(token)
 
-        if (!token) { this.logOut(); return; }
+        if (!token) { logOut(); return; }
 
         fetch('http://localhost:9999/api/user/verify', {
-            method: "POST",
-            body: JSON.stringify({ token }),
+            method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Auth": token
             }
         }).then(promise => {
             return promise.json()
         }).then(async response => {
             console.log(await response);
             if (response.status) {
-              await  this.logIn({
-                  username:response.user.username,
-                  id:response.user._id
-              });
+                await logIn({
+                    username: response.user.username,
+                    id: response.user._id
+                });
+
             } else {
-                this.logOut();
+                logOut();
             }
+
+            setLoading(false)
         })
-    }
+    }, []);
 
-    render() {
-
-        const {
-            isLogged,
-            user
-        } = this.state;
-
+    if (loading) {
         return (
-            <UserContext.Provider value={{
-                isLogged,
-                user,
-                logIn: this.logIn,
-                logOut: this.logOut
-            }}>
-
-                {this.props.children}
-            </UserContext.Provider >
+            <div>
+                {"#".repeat(20)} <h1>Loading....</h1>   {"#".repeat(20)}
+            </div>
         )
     }
+
+    return (
+
+        <UserContext.Provider value={{
+            user,
+            logIn,
+            logOut
+        }}>
+
+            {props.children}
+        </UserContext.Provider >
+
+    )
+
 }
+
+
 
 export default App;
