@@ -1,102 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 import PageLayout from '../../components/pageLayout/index';
 import style from './profile.module.css';
 import getOrigamis from '../../getPosts/getPosts';
 import Origam from '../../components/origamis/origam'
 import UserContext from '../../context/userContext';
+import PostsUser from '../../components/posts-user/posts-user'
 
-class Profile extends Component {
-    constructor(props) {
-        super(props);
+const Profile = (props) => {
 
-        this.state = {
-            username: null,
-            posts: null,
-            origamis: [],
-            currentUser: {}
-        }
+    const [username, setUsername] = useState(null);
+    const [posts, setPosts] = useState(null);
+    const [items, setItems] = useState({});
+    const params = useParams()
+    const context = useContext(UserContext);
+
+    useEffect(() => {
+        getUser(params.id);
+
+    }, [])
+
+    const logOut = () => {
+        context.logOut();
+        props.history.push('/');
     }
 
-    static contextType = UserContext;
-
-   componentDidMount() {
-       this.getUser(this.context.user.id);
-        console.log(this.context.user)
-    }
-
-    getUser = async (id) => {
+    const getUser = async (id) => {
 
         const promise = await fetch(`http://localhost:9999/api/user?id=${id}`);
 
         const currentUser = await promise.json();
 
-        this.setState({
-            currentUser: currentUser.posts
-        })
-        
         if (!currentUser) {
-            return this.props.history.push('/error')
+            return props.history.push('/error')
         }
 
         const allOrigamis = await getOrigamis();
 
-        const origamis = allOrigamis.filter((item) => {
+        const origamis = await allOrigamis.filter((item) => {
             return item.author._id === id
         });
 
-        this.setState({
-            origamis,
-            username: currentUser.username,
-            posts: currentUser.posts.length || 0
-        })
+        console.log(origamis)
+        setUsername(currentUser.username);
+        setPosts(currentUser.posts.length || 0);
+        setItems(origamis)
     }
 
-    renderOrigamis = () => {
-        const { origamis } = this.state;
-        const origamisCut = origamis.slice(0, this.state.currentUser.length)
-        return (
-            origamisCut.map((origami, index) => {
-                return (
-                    <Origam key={index} index={index} {...origami} />
-                )
-            })
-        )
-    }
 
-    logOut = () => {
-        this.context.logOut();
-        this.props.history.push('/');
-    }
-
-    render() {
-
-        const {
-            username,
-            posts
-        } = this.state;
-
-        return (
-            <PageLayout>
-                <div className={style.profile}>
-                    <img className={style.profile_image} src="https://picsum.photos/id/237/200/300" alt="profile-imagee" />
-                    <div className={style.personal_info}>
-                        <p className={style.p}>
-                            <span>Username: </span>
-                            {username}
-                        </p>
-                        <p className={style.p}>
-                            <span>Posts: </span>
-                            {posts}
-                        </p>
-                    </div>
+    return (
+        <PageLayout>
+            <div className={style.profile}>
+                <img className={style.profile_image} src="https://picsum.photos/id/237/200/300" alt="profile-imagee" />
+                <div className={style.personal_info}>
+                    <p className={style.p}>
+                        <span>Username: </span>
+                        {username}
+                    </p>
+                    <p className={style.p}>
+                        <span>Posts: </span>
+                        {posts}
+                    </p>
                 </div>
+            </div>
 
-                {this.renderOrigamis()}
+            <PostsUser props={items} />
 
-                <button onClick={this.logOut}>Logout</button>
-            </PageLayout>
-        )
-    }
+            <button onClick={logOut}>Logout</button>
+        </PageLayout>
+    )
 
 }
 

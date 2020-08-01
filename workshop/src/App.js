@@ -8,7 +8,7 @@ function getCookie(name) {
 
 const App = (props) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
 
     const logIn = (user) => {
@@ -22,7 +22,6 @@ const App = (props) => {
     const logOut = () => {
 
         document.cookie = "x-auth-token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
-
         setUser({
             isLogged: false
         })
@@ -43,7 +42,7 @@ const App = (props) => {
         }).then(promise => {
             return promise.json()
         }).then(async response => {
-            console.log(await response);
+            // console.log(await response);
             if (response.status) {
                 await logIn({
                     username: response.user.username,
