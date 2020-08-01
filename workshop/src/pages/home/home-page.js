@@ -1,57 +1,70 @@
 import PageLayout from '../../components/pageLayout/index';
-import React, { Component } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import style from '../../components/origamis/index.module.css';
-import Origam from '../../components/origamis/origam';
 import Title from '../../components/title/title';
 import getOrigamis from '../../getPosts/getPosts'
-import UserContext from '../../context/userContext';
+import PostsUser from '../../components/posts-user/posts-user';
 
+const Posts = () => {
 
-class Posts extends Component {
-  constructor(props) {
-    super(props);
+  const [origamis, setOrigamis] = useState([]);
 
-    this.state = {
-      origamis: []
+  useEffect(() => {
+    const doJob = async () => {
+      const result = await getOrigamis()
+      setOrigamis(result);
     }
-  }
 
-  static contextType = UserContext;
+    doJob()
+  }, []);
 
-  renderOrigamis = () => {
-    const { origamis } = this.state;
-    return (
-      origamis.map((origami, index) => {
-        return (
-          <Origam key={index} index={index} {...origami} />
-        )
-      })
-    )
-  }
-
- async componentDidMount() {
-    const origamis = await getOrigamis();
-
-    this.setState({
-      origamis
-    });
-  }
-
-  render() {
-    return (
-      <PageLayout>
-    
-        <div className={style.Posts}>
-          <Title title="Publications" />
-          <div>
-            {this.renderOrigamis()}
-          </div>
+  return (
+    <PageLayout>
+      <div className={style.Posts}>
+        <Title title="Publications" />
+        <div>
+          <PostsUser props={origamis} />
         </div>
-      </PageLayout>
+      </div>
+    </PageLayout>
+  )
 
-    )
-  }
 }
+
+// class Posts extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       origamis: []
+//     }
+//   }
+
+//   static contextType = UserContext;
+
+//   async componentDidMount() {
+
+
+//     this.setState({
+//       origamis
+//     });
+//   }
+
+//   render() {
+//     return (
+//       <PageLayout>
+
+//         <div className={style.Posts}>
+//           <Title title="Publications" />
+//           <div>
+//             {this.renderOrigamis()}
+//           </div>
+//         </div>
+//       </PageLayout>
+
+//     )
+//   }
+// }
 
 
 //
