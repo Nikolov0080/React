@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import React, { useState, useContext, useEffect, useCallback, } from 'react';
+import { useParams, useHistory } from 'react-router-dom'
 import PageLayout from '../../components/pageLayout/index';
 import style from './profile.module.css';
 import getOrigamis from '../../getPosts/getPosts';
-import Origam from '../../components/origamis/origam'
 import UserContext from '../../context/userContext';
 import PostsUser from '../../components/posts-user/posts-user'
 
@@ -14,25 +13,22 @@ const Profile = (props) => {
     const [items, setItems] = useState({});
     const params = useParams()
     const context = useContext(UserContext);
+    const history = useHistory();
 
-    useEffect(() => {
-        getUser(params.id);
-
-    }, [])
 
     const logOut = () => {
         context.logOut();
-        props.history.push('/');
+        history.push('/');
     }
 
-    const getUser = async (id) => {
+    const getUser = useCallback(async (id) => {
 
         const promise = await fetch(`http://localhost:9999/api/user?id=${id}`);
 
         const currentUser = await promise.json();
 
         if (!currentUser) {
-            return props.history.push('/error')
+            return history.push('/error')
         }
 
         const allOrigamis = await getOrigamis();
@@ -41,12 +37,14 @@ const Profile = (props) => {
             return item.author._id === id
         });
 
-        console.log(origamis)
         setUsername(currentUser.username);
         setPosts(currentUser.posts.length || 0);
         setItems(origamis)
-    }
+    }, [history])
 
+    useEffect(() => {
+        getUser(params.id);
+    }, [params.id, getUser])
 
     return (
         <PageLayout>

@@ -3,8 +3,7 @@ import Origam from '../origamis/origam';
 
 
 const PostsUser = (props) => {
-    console.log(props)
-    
+        
     if (props.props.length > 0) {
         return (
             <div>

@@ -18,7 +18,7 @@ class ShareThoughts extends Component {
         getPosts().then((posts) => {
             const firstThreePosts = posts.slice(posts.length - 3, posts.length);
             this.setState({
-                data: firstThreePosts
+                data: (firstThreePosts)
             })
         })
 
