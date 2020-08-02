@@ -4,26 +4,42 @@ import style from '../../components/origamis/index.module.css';
 import Title from '../../components/title/title';
 import getOrigamis from '../../getPosts/getPosts'
 import PostsUser from '../../components/posts-user/posts-user';
+import Pagination from '../../components/pagination/pagination';
 
 const Posts = () => {
 
-  const [origamis, setOrigamis] = useState([]);
+  const [posts, setPosts] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(5);
 
   useEffect(() => {
     const doJob = async () => {
       const result = await getOrigamis()
-      setOrigamis(result);
+      setPosts(result.reverse());
     }
 
     doJob()
   }, []);
 
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Change page
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   return (
     <PageLayout>
       <div className={style.Posts}>
         <Title title="Publications" />
+        <h3>Total posts: {posts.length}</h3>
         <div>
-          <PostsUser props={origamis} />
+          <PostsUser props={currentPosts} />
+          <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
         </div>
       </div>
     </PageLayout>
@@ -31,43 +47,6 @@ const Posts = () => {
 
 }
 
-// class Posts extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       origamis: []
-//     }
-//   }
-
-//   static contextType = UserContext;
-
-//   async componentDidMount() {
-
-
-//     this.setState({
-//       origamis
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <PageLayout>
-
-//         <div className={style.Posts}>
-//           <Title title="Publications" />
-//           <div>
-//             {this.renderOrigamis()}
-//           </div>
-//         </div>
-//       </PageLayout>
-
-//     )
-//   }
-// }
-
-
-//
 
 
 
