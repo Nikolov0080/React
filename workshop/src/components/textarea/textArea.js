@@ -1,12 +1,10 @@
 import React from 'react';
 import style from './textArea.module.css';
 
-const TextArea = () => {
+const TextArea = ({ func }) => {
 
-    return(
-<textarea className={style.textarea}>
-
-</textarea>
+    return (
+        <textarea onChange={e => func(e)} className={style.textarea}></textarea>
     )
 }
 

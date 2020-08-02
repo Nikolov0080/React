@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserContext from './context/userContext';
+import getCookie from './utils/getCookie';
 
-function getCookie(name) {
-    const cookieValue = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return cookieValue ? cookieValue[2] : null;
-}
 
 const App = (props) => {
     const [user, setUser] = useState(null);
@@ -29,7 +26,7 @@ const App = (props) => {
 
     useEffect(() => {
 
-        const token = getCookie("x-auth-token");
+        const token = getCookie.cookie;
 
         if (!token) { logOut(); return; }
 

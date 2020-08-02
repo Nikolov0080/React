@@ -1,5 +1,5 @@
 import PageLayout from '../../components/pageLayout/index';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from '../../components/origamis/index.module.css';
 import Title from '../../components/title/title';
 import getOrigamis from '../../getPosts/getPosts'
