@@ -32,9 +32,8 @@ const ShareThoughts = () => {
 
     const share = async (e) => {
         e.preventDefault()
-        console.log(data)
 
-        const promise = await fetch('http://localhost:9999/api/origami', {
+        await fetch('http://localhost:9999/api/origami', {
             method: "POST",
             body: JSON.stringify({ "description": publication, "_id": data.decoded.id }),
             headers: {
