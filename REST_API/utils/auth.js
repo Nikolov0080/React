@@ -8,7 +8,7 @@ module.exports = (redirectAuthenticated = true) => {
 
         const token = req.headers.auth || '';
 
-console.log(token)
+
         jwt.verifyToken(token).then(data => {
             models.User.findById(data.id)
                 .then((user) => {

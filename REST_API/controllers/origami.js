@@ -8,7 +8,7 @@ module.exports = {
     },
 
     post: (req, res, next) => {
-  console.log(req.body)
+
         const { description } = req.body;
         const { _id } = req.body;
 
